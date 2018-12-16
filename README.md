@@ -10,7 +10,7 @@ You need to install nodejs if you don't have it already [node](https://nodejs.or
 ## Instructions
 
 1. Clone the git repository to you local machine. Open git bash and execute the following command:
-`https://github.com/mafonse88/neustar-project.git`
+`git clone https://github.com/mafonse88/neustar-project.git`
 
 2. Navigate to the project directory:
 `cd neustar-project/`
