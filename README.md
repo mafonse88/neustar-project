@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 This project uses [Angular Material](https://material.angular.io/) to give a better apperance to the web app.
 
 ## Project Structure
-1. app
+app
   - category
     - category.component.css
     - category.component.ts
