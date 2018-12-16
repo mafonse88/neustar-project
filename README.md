@@ -5,11 +5,12 @@ This project uses [Angular Material](https://material.angular.io/) to give a bet
 
 ## Project Pre-requisites
 
-You need to install nodejs if you don't have already [nodeUrl](https://nodejs.org/en/)
+You need to install nodejs if you don't have it already [node](https://nodejs.org/en/)
 
 ## Instructions
 
-1. Clone the git repository 
+1. Clone the git repository to you local machine. Open git bash and execute the following command:
+`https://github.com/mafonse88/neustar-project.git`
 
 
 
