@@ -1,54 +1,7 @@
-<mat-toolbar color="primary">
-  <span>{{title}}</span>
-</mat-toolbar>
-<mat-card>
-  <form (submit)="onProcessJson(processForm)" #processForm="ngForm">
-    <mat-form-field>
-      <textarea matInput [ngModel]="jsonTxt" name="jsonTxt" placeholder="Input json"></textarea>
-    </mat-form-field>
-    <br>
-
-    <button mat-raised-button color="primary" type="submit">Submit</button>
-  </form>
-  <button mat-raised-button color="accent" (click)="cleanForm()">Clean</button>
-</mat-card>
-<div class="errorMessage" *ngFor="let error of jsonErrorMsgs">
-    <label >{{error}}</label>
-</div>
-<div *ngIf="isReady">
-    <mat-card>
-        <table >
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let cat of categoryCount">
-                <td>{{ cat.category }}</td>
-                <td>{{ cat.count }}</td>
-              </tr>
-            </tbody>
-          </table>
-    </mat-card>
-    <mat-card>
-        <table >
-            <thead>
-              <tr>
-                <th>Category</th>
-                <th>Description</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let c of cleanArray">
-                <td>{{ c.category }}</td>
-                <td>{{ c.value }}</td>
-              </tr>
-            </tbody>
-          </table>
-    </mat-card>
-</div>
+<app-header></app-header>
+<main>
+  <app-category></app-category>
+</main>
 
 
 

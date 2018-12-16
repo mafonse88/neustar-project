@@ -5,10 +5,14 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import {MatInputModule, MatButtonModule, MatCardModule, MatTableModule, MatToolbarModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CategoryComponent } from './category/category.component';
+import { HeaderComponent } from './header/header.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    CategoryComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
