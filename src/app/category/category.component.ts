@@ -171,6 +171,7 @@ export class CategoryComponent {
     this.animalCount = 0;
     this.computerCount = 0;
     this.otherCount = 0;
+    this.isReady = false;
   }
 
 }
