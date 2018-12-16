@@ -22,4 +22,7 @@ You need to install nodejs if you don't have it already [node](https://nodejs.or
 
 ## Instructions on how to run the Unit Test
 
+This project is using the embedded Unit Test provided by Angular\
+All Test cases are located in neustar-project/src/app/app.component.spec\
+
 1. Run `ng test` for unit test.
