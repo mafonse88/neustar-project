@@ -7,7 +7,7 @@ This project uses [Angular Material](https://material.angular.io/) to give a bet
 
 You need to install nodejs if you don't have it already [node](https://nodejs.org/en/)
 
-## Instructions
+## Instructions on how to run the project
 
 1. Clone the git repository to you local machine. Open git bash and execute the following command:\
 `git clone https://github.com/mafonse88/neustar-project.git`
@@ -19,3 +19,7 @@ You need to install nodejs if you don't have it already [node](https://nodejs.or
 `npm install`
 
 4. Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+## Instructions on how to run the Unit Test
+
+1. Run `ng test` for unit test.
