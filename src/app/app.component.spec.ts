@@ -4,7 +4,7 @@ import { CategoryComponent } from './category/category.component';
 import { HeaderComponent } from './header/header.component';
 import {MatInputModule, MatButtonModule, MatCardModule, MatTableModule, MatToolbarModule} from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, NgForm } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 describe('AppComponent', () => {
@@ -73,5 +73,20 @@ describe('AppComponent', () => {
     expect(component.validateParseJsonFile(jsonInput)).toBe(false);
   });
 
+  it('Should fail since input is empty', () => {
+    const fixture = TestBed.createComponent(CategoryComponent);
+    component = fixture.debugElement.componentInstance;
 
+    const jsonInput = '';
+    expect(component.validateJsonInputIsNotEmpty(jsonInput)).toBe(true);
+  });
+
+  it('Should fail since format is invalid', () => {
+    const fixture = TestBed.createComponent(CategoryComponent);
+    component = fixture.debugElement.componentInstance;
+
+    const jsonInput = `
+      {"PERSON":"Bob Jones"}`;
+    expect(component.validateParseJsonFile(jsonInput)).toBe(true);
+  });
 });
