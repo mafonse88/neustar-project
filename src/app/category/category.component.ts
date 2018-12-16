@@ -36,48 +36,54 @@ export class CategoryComponent {
   onProcessJson(form: NgForm) {
     this.showError = false;
     this.jsonErrorMsgs = [];
-    this.jsonFile = this.validateJsonInput(form.value.jsonTxt); // JSON.parse(form.value.jsonTxt);
+    const jsonInput = form.value.jsonTxt;
+    this.clearCounters();
+    // this.jsonFile = form.value.jsonTxt; // JSON.parse(form.value.jsonTxt);
 
-    if (!this.jsonFile) {
-      return;
-    }
+    if (this.validateJsonInputIsNotEmpty(jsonInput)) {
+      const parsedJson = this.parseJsonFile(jsonInput);
 
-    this.jsonFile.forEach(keyValuePair => {
-      // Validate if object already exists in array.
-      const categoryTitle = Object.keys(keyValuePair)[0];
+      if (this.validateParseJsonFile(parsedJson)) {
+        this.jsonFile = parsedJson;
+        this.jsonFile.forEach(keyValuePair => {
+          // Validate if object already exists in array.
+          const categoryTitle = Object.keys(keyValuePair)[0];
 
-      // Validate if it's s valid category
-      if (this.validCategories.indexOf(categoryTitle.toUpperCase()) < 0) {
-        this.jsonErrorMsgs.push('The following category is invalid: ' + categoryTitle);
-        this.showError = true;
-      } else {
-        const exists = this.cleanArray.filter(
-          x =>
-            x.category === categoryTitle &&
-            x.value === keyValuePair[categoryTitle]
-        );
+          // Validate if it's s valid category
+          if (this.validCategories.indexOf(categoryTitle.toUpperCase()) < 0) {
+            this.jsonErrorMsgs.push('The following category is invalid: ' + categoryTitle);
+            this.showError = true;
+          } else {
+            const exists = this.cleanArray.filter(
+              x =>
+                x.category === categoryTitle &&
+                x.value === keyValuePair[categoryTitle]
+            );
 
-        if (exists.length === 0) {
-          this.cleanArray.push({
-            category: categoryTitle,
-            value: keyValuePair[categoryTitle]
-          });
-        }
+            if (exists.length === 0) {
+              this.cleanArray.push({
+                category: categoryTitle,
+                value: keyValuePair[categoryTitle]
+              });
+            }
 
-        const cat = this.validCategories.filter(x => x === categoryTitle)[0];
-        if (cat === 'PERSON') {
-          this.personCount++;
-        } else if (cat === 'PLACE') {
-          this.placeCount++;
-        } else if (cat === 'ANIMAL') {
-          this.animalCount++;
-        } else if (cat === 'COMPUTER') {
-          this.computerCount++;
-        } else if (cat === 'OTHER') {
-          this.otherCount++;
-        }
+            const cat = this.validCategories.filter(x => x === categoryTitle)[0];
+            if (cat === 'PERSON') {
+              this.personCount++;
+            } else if (cat === 'PLACE') {
+              this.placeCount++;
+            } else if (cat === 'ANIMAL') {
+              this.animalCount++;
+            } else if (cat === 'COMPUTER') {
+              this.computerCount++;
+            } else if (cat === 'OTHER') {
+              this.otherCount++;
+            }
+          }
+        });
+        this.isReady = true;
       }
-    });
+    }
 
     this.categoryCount = [
       { category: 'PERSON', count: this.personCount++ },
@@ -87,33 +93,56 @@ export class CategoryComponent {
       { category: 'OTHER', count: this.otherCount++ }
     ];
 
-    this.isReady = true;
+
     form.resetForm();
     // console.log(this.cleanArray);
     // console.log(this.categoryCount);
   }
 
   /**
-   * This method validates and parsed the json input
-   * @param json - json string to be parsed and validated
+   * This method validates that the input is not empty
+   * @param json - json string
    */
-  validateJsonInput(json: string) {
-    let parsedJson;
+  validateJsonInputIsNotEmpty(json: string) {
     try {
       if (!json) {
         this.jsonErrorMsgs.push('JSON is empty. Please try again');
         this.showError = true;
-        return;
-      } else {
-        parsedJson = JSON.parse(json);
-        if (!Array.isArray(parsedJson)) {
-          this.jsonErrorMsgs.push('JSON has to be an array. Please try again');
-          this.showError = true;
-          return;
-        }
+        return false;
       }
-      return parsedJson;
+      return true;
     } catch (error) {
+      this.jsonErrorMsgs.push('Invalid JSON. Please try again');
+      this.showError = true;
+    }
+  }
+
+  /**
+   * This method parse the json input
+   * @param jsonInput - json string
+   */
+  parseJsonFile(jsonInput) {
+    try {
+      return JSON.parse(jsonInput);
+    } catch {
+      this.jsonErrorMsgs.push('Invalid JSON. Please try again');
+      this.showError = true;
+    }
+  }
+
+  /**
+   * This method validates that the parsed json has the correct format
+   * @param parsedJson - json string
+   */
+  validateParseJsonFile(parsedJson) {
+    try {
+      if (!Array.isArray(parsedJson)) {
+        this.jsonErrorMsgs.push('JSON has to be an array. Please try again');
+        this.showError = true;
+        return false;
+      }
+      return true;
+    } catch {
       this.jsonErrorMsgs.push('Invalid JSON. Please try again');
       this.showError = true;
     }
@@ -134,6 +163,14 @@ export class CategoryComponent {
     this.jsonErrorMsgs = [];
     this.jsonTxt = null;
     this.isReady = false;
+  }
+
+  clearCounters() {
+    this.personCount = 0;
+    this.placeCount = 0;
+    this.animalCount = 0;
+    this.computerCount = 0;
+    this.otherCount = 0;
   }
 
 }
