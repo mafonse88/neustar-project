@@ -3,6 +3,22 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.\
 This project uses [Angular Material](https://material.angular.io/) to give a better apperance to the web app.
 
+## Project Structure
+app
+  - category
+    - category.component.css
+    - category.component.ts
+    - category.component.html
+  - header
+    - header.component.css
+    - header.component.ts
+    - header.component.html
+  - app.component.css
+  - app.component.html
+  - app.component.spec.ts
+  - app.component.ts
+  - app.module.ts        
+
 ## Project Pre-requisites
 
 You need to install nodejs if you don't have it already [node](https://nodejs.org/en/)
@@ -23,6 +39,6 @@ You need to install nodejs if you don't have it already [node](https://nodejs.or
 ## Instructions on how to run the Unit Test
 
 This project is using the embedded Unit Test provided by Angular\
-All Test cases are located in neustar-project/src/app/app.component.spec
+All Test cases are located in `neustar-project/src/app/app.component.spec`
 
 1. Run `ng test` for unit test.
