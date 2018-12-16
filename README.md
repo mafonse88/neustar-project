@@ -1,6 +1,7 @@
 # NeustarProject
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
+This project uses [Angular Material](https://material.angular.io/) to give a better apperance to the web app.
 
 ## Development server
 
