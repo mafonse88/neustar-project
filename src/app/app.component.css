@@ -1,0 +1,23 @@
+mat-card {
+  width: 80%;
+  margin: 1rem auto;
+}
+
+mat-form-field,
+textarea {
+  width: 100%;
+}
+
+table {
+  width: 50%;
+}
+
+.errorMessage {
+  color: red;
+  width: 80%;
+  margin: 1rem auto;
+}
+
+button {
+  margin: 5px;
+}
