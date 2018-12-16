@@ -4,21 +4,21 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 This project uses [Angular Material](https://material.angular.io/) to give a better apperance to the web app.
 
 ## Project Structure
-src
-  app
-    category
-      category.component.css
-      category.component.ts
-      category.component.html
-    header
-      header.component.css
-      header.component.ts
-      header.component.html
-  app.component.css
-  app.component.html
-  app.component.spec.ts
-  app.component.ts
-  app.module.ts          
+src\
+  app\
+    category\
+      category.component.css\
+      category.component.ts\
+      category.component.html\
+    header\
+      header.component.css\
+      header.component.ts\
+      header.component.html\
+  app.component.css\
+  app.component.html\
+  app.component.spec.ts\
+  app.component.ts\
+  app.module.ts     \     
 
 ## Project Pre-requisites
 
